@@ -7,6 +7,10 @@ A simple conversational app powered by LangChain and Streamlit that
 3. Sends it to [Anthropic's Claude on Amazon Bedrock](https://aws.amazon.com/bedrock/claude/)
 4. Translates the response back to the source language
 5. Turns the response into speech via [Amazon Polly](https://aws.amazon.com/polly/)
+
+If this is not enough, here's a sequence diagram telling you the exact same thing:
+
+![](meh.png)
             
 **Why?** Because... meeeeeeeeeeh! 🐑
 

@@ -1,0 +1,19 @@
+%% Use the mermaid-cli 
+%% > mmdc -i meh.mmd -o meh.png -t dark -b transparent
+%% or the online version
+%% https://mermaid.live
+%% to create the diagram
+sequenceDiagram
+    You 😒 ->> +MEH! 🐑 : Prompt ✍️
+    MEH! 🐑 ->> +Amazon Translate : translate_text 🌐
+    Amazon Translate ->> MEH! 🐑 : 
+    MEH! 🐑 ->> You 😒 : Translated Prompt
+    MEH! 🐑 ->> Amazon Bedrock: invoke_model 🧠
+    Amazon Bedrock ->> MEH! 🐑 : 
+    MEH! 🐑 ->> You 😒 : Response
+    MEH! 🐑 ->> +Amazon Translate : translate_text 🌐
+    Amazon Translate ->> MEH! 🐑 : 
+    MEH! 🐑 ->> You 😒 : Translated Response
+    MEH! 🐑 ->> Amazon Polly : synthesize_speech 🦜
+    Amazon Polly ->> MEH! 🐑 : 
+    MEH! 🐑 ->> You 😒 : Play 🔊
