@@ -30,6 +30,8 @@ docker build --rm -t meh .
 
 ### Deploy
 
+> This app uses [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html), the AWS SDK for Python, to call AWS services. You **must** configure both AWS credentials *and* an AWS Region in order to make requests. For information on how to do this, see [AWS Boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html) (Developer Guide > Credentials).
+
 #### Linux
 
 ```bash
@@ -41,3 +43,5 @@ docker run --rm --device /dev/snd -p 8501:8501 meh
 ```bash
 wsl docker run --rm -e PULSE_SERVER=/mnt/wslg/PulseServer -v /mnt/wslg/:/mnt/wslg/ -p 8501:8501 meh
 ```
+
+![](ui.jpg)
