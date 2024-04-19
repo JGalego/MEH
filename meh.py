@@ -44,8 +44,8 @@ import botocore
 
 import streamlit as st
 
-from langchain.chat_models import BedrockChat
-from langchain.prompts import ChatPromptTemplate
+from langchain_community.chat_models.bedrock import BedrockChat
+from langchain_core.prompts.chat import ChatPromptTemplate
 
 from pydub import AudioSegment
 from pydub.playback import play
@@ -168,14 +168,17 @@ model_kwargs = {
         float(os.getenv("BEDROCK_JCVD_TOP_P", "1")),
     "top_k":
         int(os.getenv("BEDROCK_JCVD_TOP_K", "250")),
-    "max_tokens_to_sample":
+    "max_tokens":
         int(os.getenv("BEDROCK_JCVD_MAX_TOKENS_TO_SAMPLE", "300"))
 }
 
 @st.cache_data
 def lst_models():
     """Lists all Anthropic models"""
-    return bedrock.list_foundation_models(byProvider='Anthropic')['modelSummaries']
+    return bedrock.list_foundation_models(
+        byProvider='Anthropic',
+        byInferenceType='ON_DEMAND'
+    )['modelSummaries']
 
 # Full list of base model IDs is available at
 # https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids-arns.html
@@ -184,7 +187,7 @@ st.sidebar.selectbox(
     label='Model',
     options=models,
     index=models.index(next(filter(lambda n: n.get('modelId') == 'anthropic.claude-v2', models))),
-    format_func=lambda model: model['modelId'],
+    format_func=lambda model: model['modelId'].split(".")[1],
     key='model'
 )
 
